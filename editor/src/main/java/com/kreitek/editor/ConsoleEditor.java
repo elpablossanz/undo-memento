@@ -2,10 +2,10 @@ package com.kreitek.editor;
 
 import com.kreitek.editor.commands.CommandFactory;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ConsoleEditor implements Editor {
+
     public static final String TEXT_RESET = "\u001B[0m";
     public static final String TEXT_BLACK = "\u001B[30m";
     public static final String TEXT_RED = "\u001B[31m";
@@ -16,8 +16,11 @@ public class ConsoleEditor implements Editor {
     public static final String TEXT_CYAN = "\u001B[36m";
     public static final String TEXT_WHITE = "\u001B[37m";
 
+
     private final CommandFactory commandFactory = new CommandFactory();
     private ArrayList<String> documentLines = new ArrayList<String>();
+
+
 
     @Override
     public void run() {
@@ -34,6 +37,7 @@ public class ConsoleEditor implements Editor {
             }
             showDocumentLines(documentLines);
             showHelp();
+
         }
     }
 
@@ -64,6 +68,7 @@ public class ConsoleEditor implements Editor {
         printLnToConsole("To add new line -> a \"your text\"");
         printLnToConsole("To update line  -> u [line number] \"your text\"");
         printLnToConsole("To delete line  -> d [line number]");
+        printLnToConsole("To undo line  -> undo");
     }
 
     private void printErrorToConsole(String message) {
@@ -83,5 +88,6 @@ public class ConsoleEditor implements Editor {
     private void printToConsole(String message) {
         System.out.print(message);
     }
+
 
 }
